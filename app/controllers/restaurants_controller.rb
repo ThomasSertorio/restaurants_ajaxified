@@ -8,4 +8,13 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.find(params[:id])
     @review = Review.new
   end
+
+  def destroy
+    @restaurant = Restaurant.find(params[:id])
+    @restaurant.destroy
+    respond_to do |format|
+      format.html { redirect_to restaurants_path }
+      format.js
+    end
+  end
 end

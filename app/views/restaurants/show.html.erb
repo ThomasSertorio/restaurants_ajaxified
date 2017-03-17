@@ -4,7 +4,7 @@
 
       <h1><%= @restaurant.name %></h1>
       <%= image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=15&size=400x300&sensor=false&maptype=roadmap&markers=color:blue|#{@restaurant.address}" %>
-      <h2>
+      <h2 id="js-review_title">
         <%= pluralize @restaurant.reviews.size, "review" %>
       </h2>
 
@@ -18,11 +18,7 @@
         <% end %>
       </div>
 
-      <%= simple_form_for([@restaurant, @review]) do |f| %>
-        <%= f.input :content %>
-        <%= f.submit "Envoyer !" %>
-      <% end %>
-
+      <%= render 'form', restaurant: @restaurant, review: @review %>
 
       <br>
       <br>
